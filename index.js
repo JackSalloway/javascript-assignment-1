@@ -1,3 +1,4 @@
+// generate computer selection
 const computerPlay = () => {
     // generate an integer between 0 and 2
     let computerChoice = Math.floor(Math.random() * 3);
@@ -11,9 +12,18 @@ const computerPlay = () => {
     }
 }
 
-const playRound = (playerSelection, computerSelection) => {
-    // tie assigned values to computerPlay result and return to console
+// assign computer selection to a variable
+const computerSelection = computerPlay();
 
+// create function for one round of rock, paper, scissors
+const playRound = (computerSelection) => {
+
+    // create player input
+    const playerInput = window.prompt('Rock, paper, scissors - go!', '');
+    const playerSelection = playerInput.toLowerCase();
+
+
+    // assign player and computer choices to values
     if (computerSelection === 'rock' && playerSelection === 'paper') {
         return 'Computer chose rock - You win!';
     } else if (computerSelection === 'rock' && playerSelection === 'scissors') {
@@ -35,7 +45,5 @@ const playRound = (playerSelection, computerSelection) => {
     }
 }
 
-const playerInput = window.prompt('Rock, paper, scissors - go!', '');
-const playerSelection = playerInput.toLowerCase();
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+
+console.log(playRound(computerSelection));
