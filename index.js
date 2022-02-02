@@ -12,6 +12,9 @@ const computerPlay = () => {
     }
 }
 
+let computerScore = 0;
+let playerScore = 0;
+
 // assign computer selection to a variable
 const computerSelection = computerPlay();
 
@@ -35,6 +38,7 @@ const playRound = (computerSelection) => {
         (computerSelection === 'paper' && playerSelection === 'rock')) {
         console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
         console.log("The computer has won this round!");
+        return computerScore++
     }
     // player win values
     else if ((computerSelection === 'rock' && playerSelection === 'paper') ||
@@ -42,6 +46,7 @@ const playRound = (computerSelection) => {
         (computerSelection === 'paper' && playerSelection === 'scissors')) {
         console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
         console.log("You have won the round!");
+        return playerScore++
     }
     // invalid inputs
     else {
