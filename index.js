@@ -27,28 +27,27 @@ const playRound = (computerSelection) => {
     // tie values
     if (computerSelection === playerSelection) {
         console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
-        return "It's a tie!"
+        console.log("It's a tie!");
     }
     // computer win values
     else if ((computerSelection === 'rock' && playerSelection === 'scissors') ||
         (computerSelection === 'scissors' && playerSelection === 'paper') ||
         (computerSelection === 'paper' && playerSelection === 'rock')) {
         console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
-        return "The computer has won this round!"
+        console.log("The computer has won this round!");
     }
     // player win values
     else if ((computerSelection === 'rock' && playerSelection === 'paper') ||
         (computerSelection === 'scissors' && playerSelection === 'rock') ||
         (computerSelection === 'paper' && playerSelection === 'scissors')) {
         console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
-        return "You have won the round!"
+        console.log("You have won the round!");
     }
     // invalid inputs
     else {
         console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
-        return 'Please provided a valid input'
+        console.log('Please provide a valid input');
     }
 }
 
-
-// console.log(playRound(computerSelection));
+playRound(computerSelection);
