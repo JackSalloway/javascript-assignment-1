@@ -24,26 +24,31 @@ const playRound = (computerSelection) => {
 
 
     // assign player and computer choices to values
-    if (computerSelection === 'rock' && playerSelection === 'paper') {
-        return 'Computer chose rock - You win!';
-    } else if (computerSelection === 'rock' && playerSelection === 'scissors') {
-        return 'Computer chose rock - You lose.';
-    } else if (computerSelection === 'scissors' && playerSelection === 'rock') {
-        return 'Computer chose scissors - You win!';
-    } else if (computerSelection === 'scissors' && playerSelection === 'paper') {
-        return 'Computer chose scissors - You lose.';
-    } else if (computerSelection === 'paper' && playerSelection === 'scissors') {
-        return 'Computer chose paper - You win!';
-    } else if (computerSelection === 'paper' && playerSelection === 'rock') {
-        return 'Computer chose paper - You lose.';
-    } else if (computerSelection === playerSelection) {
-        return "It's a tie!";
-    } else {
-        console.log(computerSelection);
-        console.log(playerSelection);
-        return 'Please provide a valid input';
+    // tie values
+    if (computerSelection === playerSelection) {
+        console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
+        return "It's a tie!"
+    }
+    // computer win values
+    else if ((computerSelection === 'rock' && playerSelection === 'scissors') ||
+        (computerSelection === 'scissors' && playerSelection === 'paper') ||
+        (computerSelection === 'paper' && playerSelection === 'rock')) {
+        console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
+        return "The computer has won this round!"
+    }
+    // player win values
+    else if ((computerSelection === 'rock' && playerSelection === 'paper') ||
+        (computerSelection === 'scissors' && playerSelection === 'rock') ||
+        (computerSelection === 'paper' && playerSelection === 'scissors')) {
+        console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
+        return "You have won the round!"
+    }
+    // invalid inputs
+    else {
+        console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
+        return 'Please provided a valid input'
     }
 }
 
 
-console.log(playRound(computerSelection));
+// console.log(playRound(computerSelection));
