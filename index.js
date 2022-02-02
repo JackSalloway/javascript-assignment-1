@@ -54,5 +54,3 @@ const playRound = (computerSelection) => {
         console.log('Please provide a valid input');
     }
 }
-
-playRound(computerSelection);
