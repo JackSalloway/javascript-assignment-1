@@ -58,7 +58,7 @@ const playRound = () => {
 
 // create first to 5 loop function
 const firstToFive = () => {
-    while (computerScore < 5 || playerScore < 5) {
+    while (computerScore < 5 && playerScore < 5) {
         playRound();
     }
 }
