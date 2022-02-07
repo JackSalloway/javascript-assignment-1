@@ -56,9 +56,19 @@ const playRound = () => {
     }
 }
 
+const test = () => console.log('test');
+
+const buttons = document.querySelectorAll('.button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', test);
+})
+
+// removed first to five function for now as getting basic dom manipulation working first
+
 // create first to 5 loop function
-const firstToFive = () => {
-    while (computerScore < 5 && playerScore < 5) {
-        playRound();
-    }
-}
+// const firstToFive = () => {
+//     while (computerScore < 5 && playerScore < 5) {
+//         playRound();
+//     }
+// }
