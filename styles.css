@@ -1,0 +1,42 @@
+html {
+    margin: 0px 0px;
+
+}
+
+body {
+    font-size: 10px;
+    width: auto;
+    height: max-content;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 60rem;
+    height: 20rem;
+    margin:  auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 1rem;
+}
+
+h1 {
+    color: white;
+    font-size: 3rem;
+}
+
+.button-select {
+    display: flex;
+    gap: 5rem;
+}
+
+.button {
+    width: 10rem;
+    height: 10rem;
+    font-size: 1.7rem;
+    font-weight: 700;
+    border: black 0.2rem solid;
+
+}
