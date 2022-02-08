@@ -14,6 +14,7 @@ const buttons = document.querySelectorAll('.button');
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
 
+        // early returns to prevent the game being played once either side reaches 5 points
         if (computerScore === 5) {
             return console.log('The computer has won the game.');
         } else if (playerScore === 5) {
