@@ -7,10 +7,11 @@ body {
     font-size: 10px;
     width: auto;
     height: max-content;
+    background-color: rgba(0, 128, 128, 0.4);
 }
 
 .container {
-    background-color: rgba(0, 128, 128, 0.4);
+    background-color: rgba(0, 128, 128, 0.8);
     width: 60rem;
     height: fit-content;
     margin:  auto;
