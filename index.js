@@ -17,7 +17,7 @@ buttons.forEach((button) => {
         if (computerScore === 5) {
             return console.log('The computer has won the game.');
         } else if (playerScore === 5) {
-            return console.log('The play has won the game.');
+            return console.log('The player has won the game.');
         };
 
         round++;
