@@ -28,6 +28,25 @@ h1 {
     font-size: 3rem;
 }
 
+.scoreboard {
+    width: 40rem;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.score {
+    border-bottom: solid black 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+.score > span {
+    font-size: 2rem;
+}
+
 .button-select {
     display: flex;
     gap: 5rem;
