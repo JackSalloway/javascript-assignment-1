@@ -47,8 +47,8 @@ const playRound = (playerSelection) => {
     // assign player and computer choices to values
     // tie values
     if (computerSelection === playerSelection) {
-        console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
-        console.log("It's a tie!");
+        console.log(`Computer choice : ${computerSelection}. Player choice : ${playerSelection}`)
+        console.log("Round tied.");
         roundState = 'tie';
         return appendElement(computerSelection, playerSelection);
     }
@@ -56,8 +56,8 @@ const playRound = (playerSelection) => {
     else if ((computerSelection === 'rock' && playerSelection === 'scissors') ||
         (computerSelection === 'scissors' && playerSelection === 'paper') ||
         (computerSelection === 'paper' && playerSelection === 'rock')) {
-        console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
-        console.log("The computer has won this round!");
+        console.log(`Computer choice : ${computerSelection}. Player choice : ${playerSelection}`)
+        console.log("Computer won the round.");
         roundState = 'loss';
         appendElement(computerSelection, playerSelection);
         return computerScore++;
@@ -66,8 +66,8 @@ const playRound = (playerSelection) => {
     else if ((computerSelection === 'rock' && playerSelection === 'paper') ||
         (computerSelection === 'scissors' && playerSelection === 'rock') ||
         (computerSelection === 'paper' && playerSelection === 'scissors')) {
-        console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
-        console.log("You have won the round!");
+        console.log(`Computer choice : ${computerSelection}. Player choice : ${playerSelection}`)
+        console.log("Player won the round");
         roundState = 'win';
         appendElement(computerSelection, playerSelection)
         return playerScore++;
