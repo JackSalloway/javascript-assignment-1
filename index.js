@@ -17,7 +17,7 @@ buttons.forEach((button) => {
 })
 
 // container query selector
-const container = document.querySelector('.container');
+const resultsContainer = document.querySelector('.results-container');
 
 // create function for one round of rock, paper, scissors
 const playRound = (playerSelection) => {
@@ -74,22 +74,25 @@ const playRound = (playerSelection) => {
 appendTie = (computerValue, playerValue) => {
     const tie = document.createElement('div');
 
+    tie.classList.add('results');
     tie.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. It's a tie!`;
-    return container.appendChild(tie);
+    return resultsContainer.appendChild(tie);
 }
 
 appendWin = (computerValue, playerValue) => {
     const win = document.createElement('div');
 
+    win.classList.add('results');
     win.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. You have won the round!`;
-    return container.appendChild(win);
+    return resultsContainer.appendChild(win);
 }
 
 appendLoss = (computerValue, playerValue) => {
     const loss = document.createElement('div');
 
+    loss.classList.add('results');
     loss.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. you have lost the round!`;
-    return container.appendChild(loss);
+    return resultsContainer.appendChild(loss);
 }
 
 // removed first to five function for now as getting basic dom manipulation working first
