@@ -44,7 +44,7 @@ const playRound = (playerSelection) => {
     if (computerSelection === playerSelection) {
         console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
         console.log("It's a tie!");
-        appendTie();
+        return appendTie(computerSelection, playerSelection);
     }
     // computer win values
     else if ((computerSelection === 'rock' && playerSelection === 'scissors') ||
@@ -52,6 +52,7 @@ const playRound = (playerSelection) => {
         (computerSelection === 'paper' && playerSelection === 'rock')) {
         console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
         console.log("The computer has won this round!");
+        appendWin(computerSelection, playerSelection);
         return computerScore++
     }
     // player win values
@@ -60,6 +61,7 @@ const playRound = (playerSelection) => {
         (computerSelection === 'paper' && playerSelection === 'scissors')) {
         console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
         console.log("You have won the round!");
+        appendLoss(computerSelection, playerSelection)
         return playerScore++
     }
     // invalid inputs
@@ -69,13 +71,25 @@ const playRound = (playerSelection) => {
     }
 }
 
-appendTie = () => {
-
+appendTie = (computerValue, playerValue) => {
     const tie = document.createElement('div');
 
-    tie.textContent = `Round: ${round} - Tie!`
+    tie.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. It's a tie!`;
     return container.appendChild(tie);
+}
 
+appendWin = (computerValue, playerValue) => {
+    const win = document.createElement('div');
+
+    win.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. You have won the round!`;
+    return container.appendChild(win);
+}
+
+appendLoss = (computerValue, playerValue) => {
+    const loss = document.createElement('div');
+
+    loss.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. you have lost the round!`;
+    return container.appendChild(loss);
 }
 
 // removed first to five function for now as getting basic dom manipulation working first
