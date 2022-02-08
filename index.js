@@ -13,6 +13,13 @@ const buttons = document.querySelectorAll('.button');
 
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
+
+        if (computerScore === 5) {
+            return console.log('The computer has won the game.');
+        } else if (playerScore === 5) {
+            return console.log('The play has won the game.');
+        };
+
         round++;
         // e.target.value = the player selection
         playRound(e.target.value);
