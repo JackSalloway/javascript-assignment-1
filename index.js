@@ -2,6 +2,9 @@
 let computerScore = 0;
 let playerScore = 0;
 
+// create round state
+let roundState = '';
+
 // create round counter
 let round = 0;
 
@@ -39,12 +42,15 @@ const playRound = (playerSelection) => {
     // assign computer selection to a variable
     const computerSelection = computerPlay();
 
+
+
     // assign player and computer choices to values
     // tie values
     if (computerSelection === playerSelection) {
         console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
         console.log("It's a tie!");
-        return appendTie(computerSelection, playerSelection);
+        roundState = 'tie';
+        return appendElement(computerSelection, playerSelection);
     }
     // computer win values
     else if ((computerSelection === 'rock' && playerSelection === 'scissors') ||
@@ -52,8 +58,9 @@ const playRound = (playerSelection) => {
         (computerSelection === 'paper' && playerSelection === 'rock')) {
         console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
         console.log("The computer has won this round!");
-        appendWin(computerSelection, playerSelection);
-        return computerScore++
+        roundState = 'loss';
+        appendElement(computerSelection, playerSelection);
+        return computerScore++;
     }
     // player win values
     else if ((computerSelection === 'rock' && playerSelection === 'paper') ||
@@ -61,8 +68,9 @@ const playRound = (playerSelection) => {
         (computerSelection === 'paper' && playerSelection === 'scissors')) {
         console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
         console.log("You have won the round!");
-        appendLoss(computerSelection, playerSelection)
-        return playerScore++
+        roundState = 'win';
+        appendElement(computerSelection, playerSelection)
+        return playerScore++;
     }
     // invalid inputs
     else {
@@ -71,29 +79,51 @@ const playRound = (playerSelection) => {
     }
 }
 
-appendTie = (computerValue, playerValue) => {
-    const tie = document.createElement('div');
+appendElement = (computerValue, playerValue) => {
+    const result = document.createElement('div');
 
-    tie.classList.add('results');
-    tie.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. It's a tie!`;
-    return resultsContainer.appendChild(tie);
+    if (roundState === 'tie') {
+        result.classList.add('results');
+        result.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. It's a tie!`;
+        return resultsContainer.appendChild(result);
+    } else if (roundState === 'loss') {
+        result.classList.add('results');
+        result.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. you have lost the round!`;
+        return resultsContainer.appendChild(result);
+    } else if (roundState === 'win') {
+        result.classList.add('results');
+        result.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. You have won the round!`;
+        return resultsContainer.appendChild(result);
+    } else {
+        console.log('Something went wrong with the win state.')
+    }
 }
 
-appendWin = (computerValue, playerValue) => {
-    const win = document.createElement('div');
+// appendTie = (computerValue, playerValue) => {
+//     const tie = document.createElement('div');
 
-    win.classList.add('results');
-    win.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. You have won the round!`;
-    return resultsContainer.appendChild(win);
-}
+//     tie.classList.add('results');
+//     tie.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. It's a tie!`;
+//     return resultsContainer.appendChild(tie);
+// }
 
-appendLoss = (computerValue, playerValue) => {
-    const loss = document.createElement('div');
+// appendWin = (computerValue, playerValue) => {
+//     const win = document.createElement('div');
 
-    loss.classList.add('results');
-    loss.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. you have lost the round!`;
-    return resultsContainer.appendChild(loss);
-}
+//     win.classList.add('results');
+//     win.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. You have won the round!`;
+//     return resultsContainer.appendChild(win);
+// }
+
+// appendLoss = (computerValue, playerValue) => {
+//     const loss = document.createElement('div');
+
+//     loss.classList.add('results');
+//     loss.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. you have lost the round!`;
+//     return resultsContainer.appendChild(loss);
+// }
+
+
 
 // removed first to five function for now as getting basic dom manipulation working first
 
