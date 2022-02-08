@@ -2,6 +2,9 @@
 let computerScore = 0;
 let playerScore = 0;
 
+// create round counter
+let round = 0;
+
 // create function for one round of rock, paper, scissors
 const playRound = (playerSelection) => {
 
@@ -55,6 +58,8 @@ const buttons = document.querySelectorAll('.button');
 
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
+        round++;
+        console.log(round);
         // e.target.value = the player selection
         playRound(e.target.value);
     });
