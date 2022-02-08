@@ -47,12 +47,10 @@ const playRound = (playerSelection) => {
         }
     }
 
-    // assign computer selection to a variable
+    // assign computer play return value to a variable
     const computerSelection = computerPlay();
 
-
-
-    // assign player and computer choices to values
+    // compare player and computer choices to values
     // tie values
     if (computerSelection === playerSelection) {
         console.log(`Computer choice : ${computerSelection}. Player choice : ${playerSelection}`)
@@ -81,7 +79,6 @@ const playRound = (playerSelection) => {
         roundState = 'win';
         appendElement(computerSelection, playerSelection);
         incrementScore();
-
         // return playerScore++;
     }
     // invalid inputs
