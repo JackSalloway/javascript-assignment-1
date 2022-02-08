@@ -8,10 +8,11 @@ let roundState = '';
 // create round counter
 let round = 0;
 
-// container query selector
+// query selectors
 const resultsContainer = document.querySelector('.results-container');
+const container = document.querySelector('.container');
 
-// button query selectors & click events
+// button query selector & click event
 const buttons = document.querySelectorAll('.button');
 
 buttons.forEach((button) => {
@@ -112,6 +113,7 @@ incrementScore = () => {
     const computerScoreboard = document.querySelector('#computer');
     const playerScoreboard = document.querySelector('#player');
     const gameEnd = document.createElement('div');
+    const resetButton = document.createElement('button');
 
     if (roundState === 'loss') {
         computerScore++;
@@ -119,7 +121,7 @@ incrementScore = () => {
         if (computerScore === 5) {
             gameEnd.classList.add('results');
             gameEnd.textContent = 'The Computer has reached 5 points - The robots have won!';
-            return resultsContainer.appendChild(gameEnd);
+            resultsContainer.appendChild(gameEnd);
         };
     } else if (roundState === 'win') {
         playerScore++;
@@ -127,7 +129,10 @@ incrementScore = () => {
         if (playerScore === 5) {
             gameEnd.classList.add('results');
             gameEnd.textContent = 'You have reached 5 points - You won the game!';
-            return resultsContainer.appendChild(gameEnd);
+            resultsContainer.appendChild(gameEnd);
+            resetButton.classList.add('reset')
+            resetButton.textContent = "Reset game"
+            container.appendChild(resetButton);
         }
     }
 };
