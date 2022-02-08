@@ -5,6 +5,20 @@ let playerScore = 0;
 // create round counter
 let round = 0;
 
+// button query selectors & click events
+const buttons = document.querySelectorAll('.button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        round++;
+        // e.target.value = the player selection
+        playRound(e.target.value);
+    });
+})
+
+// container query selector
+const container = document.querySelector('.container');
+
 // create function for one round of rock, paper, scissors
 const playRound = (playerSelection) => {
 
@@ -30,6 +44,7 @@ const playRound = (playerSelection) => {
     if (computerSelection === playerSelection) {
         console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
         console.log("It's a tie!");
+        appendTie();
     }
     // computer win values
     else if ((computerSelection === 'rock' && playerSelection === 'scissors') ||
@@ -54,15 +69,14 @@ const playRound = (playerSelection) => {
     }
 }
 
-const buttons = document.querySelectorAll('.button');
+appendTie = () => {
 
-buttons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-        round++;
-        // e.target.value = the player selection
-        playRound(e.target.value);
-    });
-})
+    const tie = document.createElement('div');
+
+    tie.textContent = `Round: ${round} - Tie!`
+    return container.appendChild(tie);
+
+}
 
 // removed first to five function for now as getting basic dom manipulation working first
 
