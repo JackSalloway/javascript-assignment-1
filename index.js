@@ -8,6 +8,9 @@ let roundState = '';
 // create round counter
 let round = 0;
 
+// container query selector
+const resultsContainer = document.querySelector('.results-container');
+
 // button query selectors & click events
 const buttons = document.querySelectorAll('.button');
 
@@ -26,9 +29,6 @@ buttons.forEach((button) => {
         playRound(e.target.value);
     });
 })
-
-// container query selector
-const resultsContainer = document.querySelector('.results-container');
 
 // create function for one round of rock, paper, scissors
 const playRound = (playerSelection) => {
@@ -68,7 +68,9 @@ const playRound = (playerSelection) => {
         console.log("Computer won the round.");
         roundState = 'loss';
         appendElement(computerSelection, playerSelection);
-        return computerScore++;
+        incrementScore();
+
+        // return computerScore++;
     }
     // player win values
     else if ((computerSelection === 'rock' && playerSelection === 'paper') ||
@@ -77,8 +79,10 @@ const playRound = (playerSelection) => {
         console.log(`Computer choice : ${computerSelection}. Player choice : ${playerSelection}`)
         console.log("Player won the round");
         roundState = 'win';
-        appendElement(computerSelection, playerSelection)
-        return playerScore++;
+        appendElement(computerSelection, playerSelection);
+        incrementScore();
+
+        // return playerScore++;
     }
     // invalid inputs
     else {
@@ -107,37 +111,26 @@ appendElement = (computerValue, playerValue) => {
     }
 }
 
-// appendTie = (computerValue, playerValue) => {
-//     const tie = document.createElement('div');
+incrementScore = () => {
+    const computerScoreboard = document.querySelector('#computer');
+    const playerScoreboard = document.querySelector('#player');
+    const gameEnd = document.createElement('div');
 
-//     tie.classList.add('results');
-//     tie.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. It's a tie!`;
-//     return resultsContainer.appendChild(tie);
-// }
-
-// appendWin = (computerValue, playerValue) => {
-//     const win = document.createElement('div');
-
-//     win.classList.add('results');
-//     win.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. You have won the round!`;
-//     return resultsContainer.appendChild(win);
-// }
-
-// appendLoss = (computerValue, playerValue) => {
-//     const loss = document.createElement('div');
-
-//     loss.classList.add('results');
-//     loss.textContent = `Round: ${round} - You chose ${playerValue}. The computer chose ${computerValue}. you have lost the round!`;
-//     return resultsContainer.appendChild(loss);
-// }
-
-
-
-// removed first to five function for now as getting basic dom manipulation working first
-
-// create first to 5 loop function
-// const firstToFive = () => {
-//     while (computerScore < 5 && playerScore < 5) {
-//         playRound();
-//     }
-// }
+    if (roundState === 'loss') {
+        computerScore++;
+        computerScoreboard.textContent = `${computerScore}`;
+        if (computerScore === 5) {
+            gameEnd.classList.add('results');
+            gameEnd.textContent = 'The Computer has reached 5 points - The robots have won!';
+            return resultsContainer.appendChild(gameEnd);
+        };
+    } else if (roundState === 'win') {
+        playerScore++;
+        playerScoreboard.textContent = `${playerScore}`;
+        if (playerScore === 5) {
+            gameEnd.classList.add('results');
+            gameEnd.textContent = 'You have reached 5 points - You won the game!';
+            return resultsContainer.appendChild(gameEnd);
+        }
+    }
+};
