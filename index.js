@@ -2,8 +2,11 @@
 let computerScore = 0;
 let playerScore = 0;
 
+// create player choice variable
+let playerSelection = '';
+
 // create function for one round of rock, paper, scissors
-const playRound = () => {
+const playRound = (playerSelection) => {
 
     // generate computer selection
     const computerPlay = () => {
@@ -21,11 +24,6 @@ const playRound = () => {
 
     // assign computer selection to a variable
     const computerSelection = computerPlay();
-
-    // create player input
-    const playerInput = window.prompt('Rock, paper, scissors - go!', '');
-    const playerSelection = playerInput.toLowerCase();
-
 
     // assign player and computer choices to values
     // tie values
@@ -56,12 +54,16 @@ const playRound = () => {
     }
 }
 
-const test = () => console.log('test');
 
 const buttons = document.querySelectorAll('.button');
 
+console.log(buttons);
+
 buttons.forEach((button) => {
-    button.addEventListener('click', test);
+    button.addEventListener('click', (e) => {
+        playerSelection = e.target.value;
+        playRound(playerSelection);
+    });
 })
 
 // removed first to five function for now as getting basic dom manipulation working first
