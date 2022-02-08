@@ -2,9 +2,6 @@
 let computerScore = 0;
 let playerScore = 0;
 
-// create player choice variable
-let playerSelection = '';
-
 // create function for one round of rock, paper, scissors
 const playRound = (playerSelection) => {
 
@@ -54,15 +51,12 @@ const playRound = (playerSelection) => {
     }
 }
 
-
 const buttons = document.querySelectorAll('.button');
-
-console.log(buttons);
 
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
-        playerSelection = e.target.value;
-        playRound(playerSelection);
+        // e.target.value = the player selection
+        playRound(e.target.value);
     });
 })
 
