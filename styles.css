@@ -75,3 +75,12 @@ h1 {
     font-weight: 400;
     text-align: left;
 }
+
+.reset {
+    width: 10rem;
+    font-size: 1rem;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    border-color: black;
+    border-radius: 1rem;
+}
