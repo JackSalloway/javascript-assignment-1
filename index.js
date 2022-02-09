@@ -29,7 +29,20 @@ buttons.forEach((button) => {
         // e.target.value = the player selection
         playRound(e.target.value);
     });
-})
+});
+
+// unsure how to do this
+
+const reset = document.querySelector('.reset');
+reset.addEventListener('click', () => {
+    console.log('test');
+    while (resultsContainer.childNodes[0]) {
+        resultsContainer.removeChild(resultsContainer.childNodes[0]);
+    }
+    resetScore()
+});
+
+
 
 // create function for one round of rock, paper, scissors
 const playRound = (playerSelection) => {
@@ -46,7 +59,7 @@ const playRound = (playerSelection) => {
         } else {
             return 'scissors';
         }
-    }
+    };
 
     // assign computer play return value to a variable
     const computerSelection = computerPlay();
@@ -87,9 +100,9 @@ const playRound = (playerSelection) => {
         console.log(`The computer chose ${computerSelection}, and you chose ${playerSelection}`)
         console.log('Please provide a valid input');
     }
-}
+};
 
-appendElement = (computerValue, playerValue) => {
+const appendElement = (computerValue, playerValue) => {
     const result = document.createElement('div');
 
     if (roundState === 'tie') {
@@ -107,13 +120,12 @@ appendElement = (computerValue, playerValue) => {
     } else {
         console.log('Something went wrong with the win state.')
     }
-}
+};
 
-incrementScore = () => {
+const incrementScore = () => {
     const computerScoreboard = document.querySelector('#computer');
     const playerScoreboard = document.querySelector('#player');
     const gameEnd = document.createElement('div');
-    const resetButton = document.createElement('button');
 
     if (roundState === 'loss') {
         computerScore++;
@@ -122,7 +134,7 @@ incrementScore = () => {
             gameEnd.classList.add('results');
             gameEnd.textContent = 'The Computer has reached 5 points - The robots have won!';
             resultsContainer.appendChild(gameEnd);
-        };
+        }
     } else if (roundState === 'win') {
         playerScore++;
         playerScoreboard.textContent = `${playerScore}`;
@@ -130,9 +142,17 @@ incrementScore = () => {
             gameEnd.classList.add('results');
             gameEnd.textContent = 'You have reached 5 points - You won the game!';
             resultsContainer.appendChild(gameEnd);
-            resetButton.classList.add('reset')
-            resetButton.textContent = "Reset game"
-            container.appendChild(resetButton);
         }
     }
 };
+
+const resetScore = () => {
+    const computerScoreboard = document.querySelector('#computer');
+    const playerScoreboard = document.querySelector('#player');
+
+    computerScore = 0;
+    playerScore = 0;
+
+    computerScoreboard.textContent = `${computerScore}`;
+    playerScoreboard.textContent = `${playerScore}`;
+}
